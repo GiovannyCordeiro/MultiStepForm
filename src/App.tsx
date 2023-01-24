@@ -1,10 +1,13 @@
-function App() {
+import classes from "./app.module.css";
+import ContainerForm from "./components/ContainerForm";
+
+export default function App() {
 
   return (
-    <div className="App">
-      <p>salve</p>
+    <div className={classes.app}>
+      <ContainerForm>
+        <p>salve</p>
+      </ContainerForm>
     </div>
   )
 }
-
-export default App;

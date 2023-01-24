@@ -1,5 +1,5 @@
-import React from 'react'
 import classes from "./ContainerForm.module.css";
+import FeedbackStepsBar from './FeedbackStepsBar';
 
 interface ContainerForm{
   children?: JSX.Element | JSX.Element[];
@@ -8,7 +8,7 @@ interface ContainerForm{
 export default function ContainerForm(props:ContainerForm) {
   return (
     <div className={classes.container_form}>
-      {props.children}
+      <FeedbackStepsBar />
     </div>
   )
 }

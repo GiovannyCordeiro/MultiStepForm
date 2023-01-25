@@ -1,7 +1,26 @@
+@font-face {
+  font-family: "Ubunto";
+  src: url(./assets/fonts/Ubuntu-Bold.ttf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Ubunto";
+  src: url(./assets/fonts/Ubuntu-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Ubunto";
+  src: url(./assets/fonts/Ubuntu-Regular.ttf);
+  font-weight: 400;
+}
+
 *{
   margin: 0;
   padding:0;
   box-sizing: border-box;
+  font-family: "Ubunto";
 }
 
 :root{

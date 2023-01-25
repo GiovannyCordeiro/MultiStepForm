@@ -5,9 +5,7 @@ export default function App() {
 
   return (
     <div className={classes.app}>
-      <ContainerForm>
-        <p>salve</p>
-      </ContainerForm>
+      <ContainerForm /> 
     </div>
   )
 }

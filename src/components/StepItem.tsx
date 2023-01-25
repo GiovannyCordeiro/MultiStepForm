@@ -6,7 +6,6 @@ interface StepItem{
   active: boolean;
 }
 
-
 function StepItem(props:StepItem) {
   const handlerActive = props.active ? classes.circle_active: classes.circle_disabled;
 

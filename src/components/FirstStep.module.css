@@ -40,7 +40,7 @@
   border:1px solid var(--Cool-gray);
 }
 
-.form button{
+.form a{
   margin-top: 11%;
   display: flex;
   width: 8.2rem;

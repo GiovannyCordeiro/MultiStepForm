@@ -1,6 +1,7 @@
+import { Outlet } from "react-router";
+
 import classes from "./ContainerForm.module.css";
 import FeedbackStepsBar from './FeedbackStepsBar';
-import FirstStep from "./FirstStep";
 
 interface ContainerForm{
   children?: JSX.Element | JSX.Element[];
@@ -11,7 +12,7 @@ export default function ContainerForm(props:ContainerForm) {
     <div className={classes.container_form}>
       <FeedbackStepsBar />
       <div className={classes.wrapper_steps}>
-        <FirstStep/>
+        <Outlet/>
       </div>
     </div>
   )

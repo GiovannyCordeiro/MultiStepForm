@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./FirstStep.module.css";
 
 function FirstStep() {
@@ -22,7 +23,7 @@ function FirstStep() {
           <input type="number" name="Phone" id="Phone" placeholder="e.g +1 234 567 890"/>
         </div>
       </div>
-      <button>Next Step</button>
+      <Link to="/SecondStep">Next Step</Link>
     </form>
   )
 }

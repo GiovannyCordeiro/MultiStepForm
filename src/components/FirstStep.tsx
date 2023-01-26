@@ -12,7 +12,7 @@ function FirstStep() {
           <input type="text" name="Name" id="Name" placeholder="Your name"/>
         </div>
         <div>
-          <label htmlFor="Email">Email</label>
+          <label htmlFor="Email">Email Address</label>
           <br/>
           <input type="email" name="Email" id="Email" placeholder="Exemple@exemple.com"/>
         </div>

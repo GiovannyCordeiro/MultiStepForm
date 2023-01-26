@@ -1,8 +1,8 @@
 .form{
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
-  width: 32em;
+  margin-top: 2.6rem;
+  width: 84.5%;
   /* background-color: orange; */
 }
 
@@ -24,15 +24,15 @@
 }
 
 .wrapper_inputs{
-  margin-top: 3rem;
+  margin-top: 2.6rem;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.5rem;
 }
 
 .form input{
   padding: 1rem;
-  margin-top: .8rem;
+  margin-top: .5rem;
   width: 100%;
   height: 3.4rem;
   border-radius: .5rem;
@@ -41,10 +41,10 @@
 }
 
 .form button{
+  margin-top: 11%;
   display: flex;
-  margin-top: 9%;
-  width: 7.8rem;
-  height: 3rem;
+  width: 8.2rem;
+  height: 3.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,5 +53,6 @@
   border: none;
   border-radius: .5rem;
   color: var(--White);
-  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
 }

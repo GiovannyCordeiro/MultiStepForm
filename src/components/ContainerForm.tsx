@@ -10,7 +10,9 @@ export default function ContainerForm(props:ContainerForm) {
   return (
     <div className={classes.container_form}>
       <FeedbackStepsBar />
-      <FirstStep/>
+      <div className={classes.wrapper_steps}>
+        <FirstStep/>
+      </div>
     </div>
   )
 }

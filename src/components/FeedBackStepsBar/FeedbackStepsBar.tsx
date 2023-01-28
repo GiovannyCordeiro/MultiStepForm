@@ -1,5 +1,5 @@
 import classes from "./FeedbackStepsBar.module.css";
-import StepItem from "./StepItem";
+import StepItem from "../StepItem/StepItem";
 
 
 export default function FeedbackStepsBar() {

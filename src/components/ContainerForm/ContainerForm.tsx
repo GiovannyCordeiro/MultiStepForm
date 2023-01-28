@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 
-import classes from "./ContainerForm.module.css";
-import FeedbackStepsBar from './FeedbackStepsBar';
+import classes from "../ContainerForm/ContainerForm.module.css";
+import FeedbackStepsBar from '../FeedBackStepsBar/FeedbackStepsBar';
 
 interface ContainerForm{
   children?: JSX.Element | JSX.Element[];

@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import classes from "./app.module.css";
-import ContainerForm from "./components/ContainerForm";
-import FirstStep from "./components/FirstStep";
-import SecondStep from "./components/SecondStep";
+import ContainerForm from "./components/ContainerForm/ContainerForm";
+import FirstStep from "./components/FirstStep/FirstStep";
+import SecondStep from "./components/SecondStep/SecondStep";
 
 const router = createBrowserRouter([
   {

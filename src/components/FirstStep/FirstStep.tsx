@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./FirstStep.module.css";
 
 type inputEvent = React.FormEvent<HTMLInputElement>;
@@ -15,9 +16,19 @@ export const verifyDataUser = (data:datasToUser) => {
 }
 
 export default function FirstStep() {
+  const navigate = useNavigate();
+
+  const [nameUser, setNameUser] = useState("");
+  const [emailUser, setEmailUser] = useState("");
+  const [phoneUser, setPhoneUser] = useState("");
+
+  const submitForm = (e:React.SyntheticEvent) => {
+    e.preventDefault();
+    navigate("/SecondStep");
+  }
 
   return (
-    <form data-testid="form"  className={classes.form}>
+    <form data-testid="form" onSubmit={submitForm} className={classes.form}>
       <h1>Personal info</h1>
       <p>Please provide you name, email adress, and phone number.</p>
       <div className={classes.wrapper_inputs}>

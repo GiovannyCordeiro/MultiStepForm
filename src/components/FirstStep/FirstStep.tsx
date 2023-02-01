@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./FirstStep.module.css";
 
@@ -27,29 +27,15 @@ export default function FirstStep() {
 
   const [nameUser, setNameUser] = useState("");
   const [emailUser, setEmailUser] = useState("");
-  const [numberUser, setNumberUser] = useState("");
+  const [phoneUser, setPhoneUser] = useState("");
 
   const submitForm = (e:React.SyntheticEvent) => {
     e.preventDefault();
     navigate("/SecondStep");
   }
 
-  const captureName = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setNameUser(e.target.value);
-  }
-
-  const captureEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setEmailUser(e.target.value);
-  }
-
-  const capturePhone = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setNumberUser(e.target.value);
-  }
-
-
-
   return (
-    <form data-testid="form" onSubmit={submitForm} className={classes.form}>
+    <form data-testid="form"  className={classes.form}>
       <h1>Personal info</h1>
       <p>Please provide you name, email adress, and phone number.</p>
       <div className={classes.wrapper_inputs}>

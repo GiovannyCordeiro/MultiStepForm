@@ -20,23 +20,20 @@ describe("Testing component", () => {
 });
 
 describe("Testing datas returned to verifyDataUser is valid", () => {
-  const user = {
-    name: "User LastName",
-    email: "test@test.com",
-    number: "(123)1234-1234",
-  }
-  const data = verifyDataUser(user)
 
   it("Name Validation", () => {
-    expect( data.name ).toMatch(/\D+ \D+/);
+    const data = verifyDataUser("User midName LastName", "name");
+    expect( data ).toBe(true);
   })
 
   it("Email Validation", () => {
-    expect(data.email).toMatch(/(\D+)@(\D+).(\D+)/);
+    const data = verifyDataUser("test@test.com", "e-mail");
+    expect( data ).toBe(true);
   })
 
   it("Number Validation", () => {
-    expect(data.number).toMatch(/(\d{0,3})(\d{4,5})-(\d{4})/);
+    const data = verifyDataUser("+11238885555555", "number");
+    expect( data ).toBe(true);
   })
 
 });

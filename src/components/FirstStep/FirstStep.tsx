@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./FirstStep.module.css";
 
 
 export const verifyDataUser = (data:string, type:string) => {
   if(type === "name"){
-    const regex = /(\D+) (\D+) (\D+)/i;
-    return regex.test(data)
+    const regex = /\D{3,} \D{4,}/i;
+    return regex.test(data);
   } 
 
   if(type === "e-mail"){
-    const regex = /\D+@\D+\.\D{3,5}/
-    return regex.test(data)
-  }
-
-  if(type === "number"){
-    const number = parseInt(data);
-    const regex = /\+1(\d{3})(\d{3})(\d{7})/
+    const regex = /\D{2,}@\D{2,}\.\D{3,}/;
     return regex.test(data);
   }
 
+  if(type === "number"){
+    const regex = /1(\d{3})(\d{3})(\d{6})/;
+    return regex.test(data);
+  }
 }
 
 export default function FirstStep() {
@@ -27,35 +25,103 @@ export default function FirstStep() {
 
   const [nameUser, setNameUser] = useState("");
   const [emailUser, setEmailUser] = useState("");
-  const [phoneUser, setPhoneUser] = useState("");
+  const [numberUser, setNumberUser] = useState("");
+
+  const [errorName, setErrorName] = useState(true);
+  const [errorEmail, setErrorEmail] = useState(true);
+  const [errorPhone, setErrorPhone] = useState(true);
+
+
+  let inputsValid = {
+    name: true,
+    email: true,
+    phone:true,
+  }
+
+  const [button, setButton] = useState(false);
 
   const submitForm = (e:React.SyntheticEvent) => {
     e.preventDefault();
     navigate("/SecondStep");
+    console.log(
+      {
+        user: nameUser, 
+        email:emailUser, 
+        number: numberUser
+      })
+  }
+
+  const changeStateButton = () => {
+    if(inputsValid.name && inputsValid.email && inputsValid.phone){
+      setButton(true)
+    }
+  }
+
+  const captureName = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const result = verifyDataUser(e.target.value,"name");
+    if(!result){
+      inputsValid.name = false;
+      setErrorName(false);
+      return setButton(false)
+    }
+    inputsValid.name = true;
+    setErrorName(true);
+    setNameUser(e.target.value);
+    changeStateButton();
+  }
+
+  const captureEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
+    if(!verifyDataUser(e.target.value,"e-mail")){
+      setErrorEmail(false);
+      inputsValid.email = false;
+      return setButton(false);
+    }
+    inputsValid.email = true;
+    setErrorEmail(true);
+    changeStateButton();
+    setEmailUser(e.target.value);
+  }
+
+  const capturePhone = (e:React.ChangeEvent<HTMLInputElement>) => {
+    if(!verifyDataUser(e.target.value,"number")){
+      inputsValid.phone = false;
+      setErrorPhone(false);
+      return setButton(false)
+    }
+    inputsValid.phone = true;
+    setErrorPhone(true);
+    setNumberUser(e.target.value);
+    changeStateButton();
   }
 
   return (
-    <form data-testid="form"  className={classes.form}>
+    <form data-testid="form" onSubmit={submitForm} className={classes.form}>
       <h1>Personal info</h1>
       <p>Please provide you name, email adress, and phone number.</p>
       <div className={classes.wrapper_inputs}>
         <div>
-          <label htmlFor="Name">Name</label>
-          <br/>
-          <input onChange={captureName} data-testid="user-name" type="text" name="Name" id="Name" placeholder="Your full name"/>
+          <div className={classes.wrapper_labels}>
+            <label htmlFor="Name">Name</label>
+            {errorName ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
+          </div>
+          <input required onChange={captureName} className={errorName ? "" : classes.input_error } data-testid="user-name" type="text" name="Name" id="Name" placeholder="Your full name"/>
         </div>
         <div>
-          <label htmlFor="Email">Email Address</label>
-          <br/>
-          <input onChange={captureEmail} data-testid="user-email" type="email" name="Email" id="Email" placeholder="Exemple@exemple.com"/>
+          <div className={classes.wrapper_labels}>
+            <label htmlFor="Email">Email Address</label>
+            {errorEmail ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
+          </div>
+          <input required onChange={captureEmail} className={errorEmail ? "" : classes.input_error } data-testid="user-email" type="email" name="Email" id="Email" placeholder="Exemple@exemple.com"/>
         </div>
         <div>
-          <label htmlFor="Phone">Phone Number</label>
-          <br/>
-          <input onChange={capturePhone} data-testId="user-number" type="number" name="Phone" id="Phone" placeholder="e.g +1 234 567 890"/>
+          <div className={classes.wrapper_labels}>
+            <label htmlFor="Phone">Phone Number</label>
+            {errorPhone ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
+          </div>
+          <input required onChange={capturePhone} className={errorPhone ? "" : classes.input_error } data-testId="user-number" type="number" name="Phone" id="Phone" placeholder="e.g +1 234 567 890"/>
         </div>
       </div>
-      <button disabled aria-label="Button to submit form" type="submit">Next Step</button>
+      <button disabled={!button} aria-label="Button to submit form" type="submit">Next Step</button>
     </form>
   )
 }

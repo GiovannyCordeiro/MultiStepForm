@@ -1,3 +1,7 @@
+:root{
+  --red: #fc2e2e;
+}
+
 .form{
   display: flex;
   flex-direction: column;
@@ -38,6 +42,24 @@
   border-radius: .5rem;
   border: none;
   border:1px solid var(--Cool-gray);
+}
+
+.form .input_error{
+  border: 1px solid var(--red);
+}
+
+.form .input_error:focus{
+  outline: 2px solid var(--red);
+}
+
+.wrapper_labels{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#errLabel{
+  color: var(--red)
 }
 
 .form button{

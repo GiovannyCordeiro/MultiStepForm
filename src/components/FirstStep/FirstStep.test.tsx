@@ -19,21 +19,80 @@ describe("Testing component", () => {
   });
 });
 
-describe("Testing datas returned to verifyDataUser is valid", () => {
 
-  it("Name Validation", () => {
-    const data = verifyDataUser("User midName LastName", "name");
+describe("Use cases the data validation function with type name", () => {
+  it("True case", () => {
+    const data = verifyDataUser("Anna Valentine", "name");
     expect( data ).toBe(true);
   })
 
-  it("Email Validation", () => {
+  it("False case", () => {
+    const data = verifyDataUser("Anna Val", "name");
+    expect( data ).toBe(false);
+  })
+
+  it("False case", () => {
+    const data = verifyDataUser("A V", "name");
+    expect( data ).toBe(false);
+  })
+
+  it("False case", () => {
+    const data = verifyDataUser("As V", "name");
+    expect( data ).toBe(false);
+  })
+
+  it("False case", () => {
+    const data = verifyDataUser("As Ve", "name");
+    expect( data ).toBe(false);
+  })
+
+});
+
+describe("Use cases the data validation function with type e-mail", () => {
+  it("True case", () => {
     const data = verifyDataUser("test@test.com", "e-mail");
     expect( data ).toBe(true);
   })
 
-  it("Number Validation", () => {
-    const data = verifyDataUser("+11238885555555", "number");
-    expect( data ).toBe(true);
+  it("Error", () => {
+    const data = verifyDataUser("test@test.c", "e-mail");
+    expect( data ).toBe(false);
   })
 
-});
+  it("Error", () => {
+    const data = verifyDataUser("test@", "e-mail");
+    expect( data ).toBe(false);
+  })
+
+  it("Error", () => {
+    const data = verifyDataUser("@test.com", "e-mail");
+    expect( data ).toBe(false);
+  })
+
+  it("Error", () => {
+    const data = verifyDataUser("t@t.com", "e-mail");
+    expect( data ).toBe(false);
+  })
+})
+
+describe("Use cases the data validation function with type number", () => {
+  it("True case", () => {
+    const data = verifyDataUser("1324585422432", "number");
+    expect( data ).toBe(true);
+  });
+
+  it("error", () => {
+    const data = verifyDataUser("13245854222", "number");
+    expect( data ).toBe(false);
+  });
+
+  it("error", () => {
+    const data = verifyDataUser("324585422432", "number");
+    expect( data ).toBe(false);
+  });
+
+  it("error", () => {
+    const data = verifyDataUser("", "number");
+    expect( data ).toBe(false);
+  });
+})

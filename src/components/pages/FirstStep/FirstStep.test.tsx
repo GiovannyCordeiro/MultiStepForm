@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
 
-import { fireEvent, getByRole, getByText, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { describe, test, vi, assert, expectTypeOf} from "vitest";
+import { describe } from "vitest";
 
 //Components and funcitions to test
 import FirstStep from "./FirstStep";

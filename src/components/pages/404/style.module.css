@@ -1,0 +1,39 @@
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.container > h1{
+  font-size: 7rem;
+}
+
+.helper_text{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.helper_text a{
+  color: black
+}
+
+@media screen and (max-width:670px){
+  .container{
+    flex-direction: column;
+  }
+
+  .container > h1{
+    font-size: 4rem;
+  }
+  
+  .helper_text{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}

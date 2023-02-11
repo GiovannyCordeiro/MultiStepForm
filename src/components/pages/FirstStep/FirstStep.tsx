@@ -31,6 +31,7 @@ export default function FirstStep() {
   const [errorEmail, setErrorEmail] = useState(true);
   const [errorPhone, setErrorPhone] = useState(true);
 
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
   let inputsValid = {
     name: true,
@@ -42,13 +43,14 @@ export default function FirstStep() {
 
   const submitForm = (e:React.SyntheticEvent) => {
     e.preventDefault();
+    const allDataUser = {
+      user: nameUser, 
+      email:emailUser, 
+      number: numberUser
+    }
+    const JSONAllDataUser = JSON.stringify(allDataUser);
+    localStorage.setItem("userData", JSONAllDataUser)
     navigate("/SecondStep");
-    console.log(
-      {
-        user: nameUser, 
-        email:emailUser, 
-        number: numberUser
-      })
   }
 
   const changeStateButton = () => {
@@ -104,21 +106,21 @@ export default function FirstStep() {
             <label htmlFor="Name">Name</label>
             {errorName ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
           </div>
-          <input required onChange={captureName} className={errorName ? "" : classes.input_error } data-testid="user-name" type="text" name="Name" id="Name" placeholder="Your full name"/>
+          <input required onChange={captureName} className={errorName ? "" : classes.input_error } data-testid="user-name" type="text" name="Name" id="Name" placeholder="Your full name" />
         </div>
         <div>
           <div className={classes.wrapper_labels}>
             <label htmlFor="Email">Email Address</label>
             {errorEmail ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
           </div>
-          <input required onChange={captureEmail} className={errorEmail ? "" : classes.input_error } data-testid="user-email" type="email" name="Email" id="Email" placeholder="Exemple@exemple.com"/>
+          <input required onChange={captureEmail} className={errorEmail ? "" : classes.input_error } data-testid="user-email" type="email" name="Email" id="Email" placeholder="Exemple@exemple.com" />
         </div>
         <div>
           <div className={classes.wrapper_labels}>
             <label htmlFor="Phone">Phone Number</label>
             {errorPhone ? "" : <label id={classes.errLabel} htmlFor="Name">This field is required</label>}
           </div>
-          <input required onChange={capturePhone} className={errorPhone ? "" : classes.input_error } data-testId="user-number" type="number" name="Phone" id="Phone" placeholder="e.g +1 234 567 890"/>
+          <input required onChange={capturePhone} className={errorPhone ? "" : classes.input_error } data-testId="user-number" type="number" name="Phone" id="Phone" placeholder="e.g +1 234 567 890" />
         </div>
       </div>
       <button disabled={!button} aria-label="Button to submit form" type="submit">Next Step</button>

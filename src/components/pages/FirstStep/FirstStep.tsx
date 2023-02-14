@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./FirstStep.module.css";
 
+import { actions } from "../../../store";
+import { useAppDispath } from "../../../hooks/reduxStateHooks";
 
 export const verifyDataUser = (data:string, type:string) => {
   if(type === "name"){
@@ -33,6 +35,8 @@ export default function FirstStep() {
 
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
+  const dispatch = useAppDispath();
+
   let inputsValid = {
     name: true,
     email: true,
@@ -50,6 +54,7 @@ export default function FirstStep() {
     }
     const JSONAllDataUser = JSON.stringify(allDataUser);
     localStorage.setItem("userData", JSONAllDataUser)
+    dispatch(actions.activeTwo())
     navigate("/SecondStep");
   }
 

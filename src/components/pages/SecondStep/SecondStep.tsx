@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import classes from "./SecondStep.module.css";
 
+import { actions } from "../../../store";
+import { useAppDispath } from "../../../hooks/reduxStateHooks";
+
 export default function SecondStep() {
+  const dispath = useAppDispath();
+  const handlerButton = () => {
+    dispath(actions.activeOne());
+  }
+
   return (
     <div className={classes.second_step}>
       <h2>Select your plan</h2>
@@ -30,7 +38,7 @@ export default function SecondStep() {
       </div>
 
       <div className={classes.navigate}>
-        <Link to="/" className={classes.back}>Go Back</Link>
+        <Link to="/" onClick={handlerButton} className={classes.back}>Go Back</Link>
         <Link to="/ThirdStep" className={classes.next_step}>Next Step</Link>
       </div>
     </div>

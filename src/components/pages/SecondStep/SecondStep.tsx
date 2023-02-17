@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import classes from "./SecondStep.module.css";
 
-import { actions } from "../../../store";
 import { useAppDispath } from "../../../hooks/reduxStateHooks";
+import { actionsButton } from "../../../store/handlerButton";
 
 export default function SecondStep() {
   const dispath = useAppDispath();
   const handlerButton = () => {
-    dispath(actions.activeOne());
+    dispath(actionsButton.activeOne());
   }
 
   return (

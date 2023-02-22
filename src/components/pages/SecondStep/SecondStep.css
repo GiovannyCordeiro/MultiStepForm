@@ -88,3 +88,34 @@
   color: var(--White);
   border-radius: .5rem;
 }
+
+#chk{
+  display: none;
+}
+
+.switch{
+  position: relative;
+  background-color: var(--Marine-blue);
+  width: 55px;
+  height: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: all .15s ease-out;
+  cursor: pointer;
+} 
+
+.slider{
+  position: absolute;
+  background-color: var(--White);
+  border-radius: 50%;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  transition: all .15s ease-out;
+}
+
+#chk:checked ~ .switch .slider{
+  transform: translateX(25px);
+}

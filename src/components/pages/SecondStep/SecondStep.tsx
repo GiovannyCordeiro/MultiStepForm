@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import classes from "./SecondStep.module.css";
+import  "./SecondStep.css";
 
 import { useAppDispath } from "../../../hooks/reduxStateHooks";
 import { actionsButton } from "../../../store/handlerButton";
@@ -11,35 +11,38 @@ export default function SecondStep() {
   }
 
   return (
-    <div className={classes.second_step}>
+    <div className="second_step">
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
-      <div className={classes.wrapper_plans}>
-        <div className={classes.plans}>
+      <div className="wrapper_plans">
+        <div className="plans">
           <img src="../assets/images/icon-arcade.svg"/>
           <b>Arcade</b>
           <span>$9/mo</span>
         </div>
-        <div className={classes.plans}>
+        <div className="plans">
           <img src="../assets/images/icon-advanced.svg"/>
           <b>Arcade</b>
           <span>$9/mo</span>
         </div>
-        <div className={classes.plans}>
+        <div className="plans">
           <img src="../assets/images/icon-pro.svg"/>
           <b>Arcade</b>
           <span>$9/mo</span>
         </div>
       </div>
-      <div className={classes.moth_or_yearly}>
+      <div className="moth_or_yearly">
         <span>Monthly</span>
-        <button>Change</button>
+        <input type="checkbox" name="" id="chk" />
+        <label htmlFor="chk" className="switch">
+          <span className="slider"></span>
+        </label>
         <span>Yearly</span>
       </div>
 
-      <div className={classes.navigate}>
-        <Link to="/" onClick={handlerButton} className={classes.back}>Go Back</Link>
-        <Link to="/ThirdStep" className={classes.next_step}>Next Step</Link>
+      <div className="navigate">
+        <Link to="/" onClick={handlerButton} className="back">Go Back</Link>
+        <Link to="/ThirdStep" className="next_ste">Next Step</Link>
       </div>
     </div>
   )

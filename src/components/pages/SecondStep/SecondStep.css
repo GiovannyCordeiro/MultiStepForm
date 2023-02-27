@@ -31,6 +31,10 @@
   margin-bottom: 2rem;
 }
 
+.plans.active{
+  border: 1px solid var(--Marine-blue);
+}
+
 .plans img{
   width: 2.5em;
 }
@@ -78,6 +82,11 @@
   transition: .1s;
 }
 
+.navigate a:hover{
+  color: var(--Marine-blue);
+  font-weight: bold;
+}
+
 .navigate .back:hover{
   color: var(--Marine-blue);
   font-weight: bold;
@@ -118,4 +127,9 @@
 
 #chk:checked ~ .switch .slider{
   transform: translateX(25px);
+}
+
+#none-plain{
+  color: var(--Light-Strawberry-red);
+  cursor: not-allowed; 
 }

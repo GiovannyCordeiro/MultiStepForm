@@ -21,27 +21,27 @@ describe("Testing component", () => {
 
 
 describe("Use cases the data validation function with type name", () => {
-  it("True case", () => {
+  it("Name is valid", () => {
     const data = verifyDataUser("Anna Valentine", "name");
     expect( data ).toBe(true);
   })
 
-  it("False case", () => {
+  it("Error in second name", () => {
     const data = verifyDataUser("Anna Val", "name");
     expect( data ).toBe(false);
   })
 
-  it("False case", () => {
+  it("One letter in first and last names", () => {
     const data = verifyDataUser("A V", "name");
     expect( data ).toBe(false);
   })
 
-  it("False case", () => {
+  it("Trying to input the minimum limit characters", () => {
     const data = verifyDataUser("As V", "name");
     expect( data ).toBe(false);
   })
 
-  it("False case", () => {
+  it("Second case the input the minimum limit characters", () => {
     const data = verifyDataUser("As Ve", "name");
     expect( data ).toBe(false);
   })
@@ -49,49 +49,49 @@ describe("Use cases the data validation function with type name", () => {
 });
 
 describe("Use cases the data validation function with type e-mail", () => {
-  it("True case", () => {
+  it("Email valid", () => {
     const data = verifyDataUser("test@test.com", "e-mail");
     expect( data ).toBe(true);
   })
 
-  it("Error", () => {
+  it("Last part of e-mail error", () => {
     const data = verifyDataUser("test@test.c", "e-mail");
     expect( data ).toBe(false);
   })
 
-  it("Error", () => {
+  it("Missing a final part of e-mail", () => {
     const data = verifyDataUser("test@", "e-mail");
     expect( data ).toBe(false);
   })
 
-  it("Error", () => {
+  it("Missing a parte of the beginning of the e-mail ", () => {
     const data = verifyDataUser("@test.com", "e-mail");
     expect( data ).toBe(false);
   })
 
-  it("Error", () => {
+  it("Minimal caracteres for an e-mail", () => {
     const data = verifyDataUser("t@t.com", "e-mail");
     expect( data ).toBe(false);
   })
 })
 
 describe("Use cases the data validation function with type number", () => {
-  it("True case", () => {
+  it("Number valid", () => {
     const data = verifyDataUser("1324585422432", "number");
     expect( data ).toBe(true);
   });
 
-  it("error", () => {
+  it("Missing minimum amount characters of a number", () => {
     const data = verifyDataUser("13245854222", "number");
     expect( data ).toBe(false);
   });
 
-  it("error", () => {
+  it("Missing the character one at the beginning", () => {
     const data = verifyDataUser("324585422432", "number");
     expect( data ).toBe(false);
   });
 
-  it("error", () => {
+  it("No number", () => {
     const data = verifyDataUser("", "number");
     expect( data ).toBe(false);
   });

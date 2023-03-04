@@ -28,9 +28,9 @@ export default function SecondStep() {
   
   const submitPlainData = () => {
     if(pricePlain === "month"){
-      return console.log(plainsPriceMonth[hoverPlain - 1])
+      return localStorage.setItem("pricePlain",`${plainsPriceMonth[hoverPlain - 1]}`);
     }
-    console.log(plainsPriceYear[hoverPlain - 1])
+    localStorage.setItem("pricePlain",`${plainsPriceYear[hoverPlain - 1]}`);
   }
   
   return (

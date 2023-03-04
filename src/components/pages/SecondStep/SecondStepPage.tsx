@@ -4,6 +4,7 @@ import SecondStep from "./SecondStep";
 
 export default function SecondStepPage() {
   const data = useLoaderData();
+  console.log(data);
   return(
     <>
       {data === true && <SecondStep/>}
